@@ -52,17 +52,16 @@ namespace facs
          {
                f.seekg(pos);
                std::getline(f,str);
-               f.get(ch);
-               if (!f.get(ch)) break;
+               if (!std::getline(f,str)) return;
                pos = f.tellg();
-               vec.push_back(fpos<mbstate_t> pos);
+               vec.push_back(std::fpos<mbstate_t>(pos));
          }
     }
     inline void rol(std::string filename,std::fpos<mbstate_t> pos,std::string& str)
     {
     std::ifstream f(filename);
     f.seekg(pos);
-    std::getline(f,str)
+    std::getline(f,str);
     }
     inline bool exist(std::string name)
     {

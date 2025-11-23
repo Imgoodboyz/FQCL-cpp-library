@@ -1,9 +1,5 @@
-FQRL v0.0.18 future release anouncement
-#it's been a long time i haven't update the lib
-#so i got a suprise for you guys,it's a full refactor
-#so many new things added,we can tell you something like
--takeline() for get offset of every line
--rol() aka read on-line,help you read exactly on the line you choose,also it's work perfect with takeline
-#learn how to use them in the doc.txt(comming soon)
-#dont forget to share with code friend and star!
-#have fun on coding ^_^
+#FQRL v0.0.20 future release
+##last update was nice,but the next update is even better,more specified mode for takeline,and tge next uodate can still about takeline but more mode for more specified work
+##the doc has been updated
+##dont forget to share with code friend and star!
+##have fun on coding ^_^

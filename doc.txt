@@ -1,5 +1,4 @@
 FCLC-Fast CaLCulating
-refactored!
 sum()
 how to write
 #sum ({list of number seperate with coma or space})
@@ -13,58 +12,61 @@ how to write
 use avg to calculating average of many number in 1 line,also
 you can do thing like sum but it calc the average
 
-FACS-Fast ACcess System
+#FACS-Fast ACcess System
 abs()"deleted due to uncompability with cross platform"
 how to write
-#abs(file name)
+##abs(file name)
 it will find the absolute path of the file that you write on
 the bracket...that's all what it have...maybe
 
+takeline<Mode::Offset>(vector<std::streampos>)
+how to write
+##Facs::takeline<Mode::Offset>::index(streampos type vector)
+this function is use to get the offset of every line(first byte of line)
+note:this is a struct,not a method
+##it's has 2 another version
+<Mode::Text> to get data of every line in file but does not get offset,use string vector
+<Mode::Full> to get data,offset of every line and use struct Fidx(full index) in facs.hpp,also you can acess the data,pos in that struct via a streampos,string object(sample is r) r.pos,r.data(pos is streampos,data is string)
+
+rol() aka read on-line
+how to write
+##rol(a iterator from vector have been takeline or use your own,string)
+read on a specified line,consider using takelined vector
+
 write()
 how to write
-#write(file name,data want to write)
+##write(data want to write)
 it will write on a .log file and that it what do you want on 
 that,i'll rename it as write because it look the same with 
 the write function
 
-read()
+read() no more use,deleted due to use case
 how to write
-#read(file name)
-it will find the path of the file and read anything it have
+##read(file name)
 only read no encode file but in the actual release it will
 
 write()
 deleted
 
-ipt()
+ipt() in legacy only
 how to write
-#ipt(name of the object(e.x (int)a,b,c,d))
+##ipt(name of the object(e.x (int)a,b,c,d))
 use like std::cin but faster
 in fixing and refacrory,please wait
 
-prt()
+prt() in legacy only
 just fast printing
-#prt(data,true/false)
+##prt(data,true/false)
 the true or false is for have endl or not
 
-new function!
 writeable()
-#writeable(file name)
+##writeable(file name)
 it's use to check if a file is writeable
 
 readable()
-#readable(file name)
+##readable(file name)
 use to check if a file can be read
 
 exist()
-#exist(file name or path)
+##exist(file name or path)
 use to check if a file is exist like the name you know
-
-just easy like that
-and also you will have some macro is
-version to show current version 
-
-last_update to show the last day the library has been updated
-
-minimum to show the minimum version of c++ to use the library
-

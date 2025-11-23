@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+enum Mode {Text,Offset,Full};
 typedef std::fpos<mbstate_t> fpos;
    #define facs_version "v0.0.16 future view"
 class Facs : public std::fstream
@@ -14,57 +15,80 @@ class Facs : public std::fstream
     {
         if (!is_open()) throw std::runtime_error("no such file or dirrectory!");
     }
+    struct Fidx
+    {
+	std::streampos pos;
+	std::string data;
+    };
+    using std::fstream::clear;
     using std::fstream::seekg;
     using std::fstream::seekp;
     using std::fstream::tellg;
     inline void rol(std::fpos<mbstate_t> pos,std::string& outs)
     {
+    this->clear();
     seekg(pos);
-    char ch;
-    while (get(ch))
-       {
-       if (ch == '\n') break;
-       outs += ch;
-       }
-       return;
+    std::getline(*this,outs);
     }
-    inline void readline(std::string& str)
+    template<Mode M>
+    struct takeline;
+    template<>
+    struct takeline<Mode::Offset>
     {
-    char ch;
-    while (get(ch))
+        inline static void index(std::istream& in,std::vector<std::streampos>& vec)
+	{
+	    in.clear();
+	    std::streampos pos = 0;
+	    std::string str;
+	    while (true)
+	    {
+		pos = in.tellg();
+		if(!std::getline(in,str)) return;
+		vec.push_back(pos);
+	    }
+	}
+    };
+    template<>
+    struct takeline<Mode::Text>
     {
-        if (ch == '\n') break;
-        str+= ch;
-    }
-    return;
-    }
-    inline std::vector<std::streampos> takeline(std::vector<std::streampos>& vec)
+	inline static void index(std::istream& in,std::vector<std::string>& vec)
+	{
+	    in.clear();
+	    std::string str;
+	    while (true)
+	    {
+		if (!std::getline(in,str)) return;
+		vec.push_back(str);
+	    }
+	}
+    };
+    template<>
+    struct takeline<Mode::Full>
     {
-        vec = {fpos(0)};
-        std::streampos pos = 0;
-        std::string str;
-        char ch;
-        while (true)
-        {
-             if (eof()) break;
-             seekg(pos);
-             readline(str);
-             get(ch);
-             pos = tellg();
-             vec.push_back(std::fpos<mbstate_t>(pos));
+        inline static void index(std::istream& in,std::vector<Fidx>& vec)
+	{
+	    in.clear()
+	    std::streampos pos = 0;
+	    std::string str;
+	    while (true)
+	    {
+		pos = in.tellg();
+		if (!std::getline(in,str)) return;
+		vec.push_back({pos,str});
+	    }
         }
-    }
+    };
     inline bool exist()
     {
         return is_open() || good();
     }
-    inline bool readable(std::string filename)
+    inline bool readable()
     {
         char ch;
         get(ch);
         return good();
     }
-    inline bool writeable(std::string name)
+    inline bool writeable()
     {
         write("");;
         return good();
@@ -75,7 +99,7 @@ class Facs : public std::fstream
         *this << data << std::endl;
         return data;
     }
-    ~Facs() {};
+    ~Facs() {close();};
 };
 namespace ultils
 {
