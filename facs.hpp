@@ -67,7 +67,7 @@ class Facs : public std::fstream
     {
         inline static void index(std::istream& in,std::vector<Fidx>& vec)
 	{
-	    in.clear()
+	    in.clear();
 	    std::streampos pos = 0;
 	    std::string str;
 	    while (true)
