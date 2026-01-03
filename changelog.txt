@@ -1,5 +1,0 @@
-#FQRL v0.0.20 future release
-##last update was nice,but the next update is even better,more specified mode for takeline,and tge next uodate can still about takeline but more mode for more specified work
-##the doc has been updated
-##dont forget to share with code friend and star!
-##have fun on coding ^_^

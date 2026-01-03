@@ -11,7 +11,7 @@ You are NOT permitted to:
 
 - Redistribute the source code under a different name
 - Push modified versions of the code to any public platform (e.g., GitHub, GitLab) without explicit permission from the author
-- Use FQRL in commercial products or paid services
+- Use FQCL in commercial products or paid services
 - Remove or alter the author's name in any part of the source code
 - Change or modifi the license.txt 
 
