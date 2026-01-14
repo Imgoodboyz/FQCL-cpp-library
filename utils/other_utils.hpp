@@ -1,13 +1,16 @@
 #ifndef other
 #define other
 #include "common include.hpp"
-    inline bool belong(const std::string sub,std::string& mainstr)
+namespace utils
+{
+    inline std::vector<std::string> reverse_vector(std::vector<std::string> vec)
     {
-        if (sub.length() > mainstr.length()) return false;
-        for (int i=0;i<mainstr.length()-sub.length();i++)
+        std::vector<std::string> new_vec;
+        for (int len=vec.size();len >= 0;--len)
         {
-            if (sub == mainstr.substr(i,sub.length())) return true;
+             new_vec.push_back(vec[len]);
         }
-        return false;
+        return new_vec;
     }
+}
 #endif

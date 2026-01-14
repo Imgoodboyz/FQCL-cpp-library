@@ -3,4 +3,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
+namespace utils
+{
+    template<typename T>
+    class Empty
+    {
+        public:
+        Empty(char* _smth) {}
+    };
+}
 #endif

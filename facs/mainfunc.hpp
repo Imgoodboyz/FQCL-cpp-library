@@ -7,12 +7,12 @@ class Facs : public std::ifstream
     public:
     Facs(const std::string& filename,const std::ios::openmode mode) : std::ifstream(filename,mode)
     {
-        if (!is_open()) throw std::runtime_error("no such file or dirrectory!");
+        if (!is_open()) throw "can't open file";
     }
     using std::ifstream::clear;
     using std::ifstream::seekg;
     using std::ifstream::tellg;
-    inline void rol(std::streampos pos,std::string& outs)
+    inline void rol(std::fpos<mbstate_t> pos,std::string& outs)
     {
     this->clear();
     seekg(pos);
