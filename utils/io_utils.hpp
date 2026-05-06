@@ -3,7 +3,7 @@
 #include "common include.hpp"
 namespace utils
 {
-    inline bool const_belong(const std::string& sub,const std::string& mainstr)
+    inline bool belong(const std::string& sub,const std::string& mainstr)
     {
         if (sub.length() > mainstr.length()) return false;
         for (int i=0;i<mainstr.length()-sub.length();i++)
@@ -21,7 +21,7 @@ namespace utils
         }
         return false;
     }
-    inline bool belong_const_f(const std::string& sub,std::string& mainstr)
+    inline bool belong(const std::string& sub,std::string& mainstr)
     {
         if (sub.length() > mainstr.length()) return false;
         for (int i=0;i<mainstr.length()-sub.length();i++)
@@ -30,7 +30,7 @@ namespace utils
         }
         return false;
     }
-    inline bool belong_const_a(std::string& sub,const std::string& mainstr)
+    inline bool belong(std::string& sub,const std::string& mainstr)
     {
         if (sub.length() > mainstr.length()) return false;
         for (int i=0;i<mainstr.length()-sub.length();i++)
