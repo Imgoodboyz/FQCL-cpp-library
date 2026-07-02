@@ -30,4 +30,6 @@ class Facs : public std::ifstream
     }
     ~Facs() {close();};
 };
+
+
 #endif

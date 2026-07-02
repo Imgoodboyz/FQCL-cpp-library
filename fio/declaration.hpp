@@ -18,5 +18,4 @@ enum SubMode{Norm,SKeyw,EKeyw,SLent,ELent,SKSL,SKEL,EKSL,EKEL,SRange,ERange};
 	std::streampos pos;
 	std::string data;
     };
-
 #endif
